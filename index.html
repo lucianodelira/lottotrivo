@@ -453,6 +453,134 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
   }, 5000);
 </script>
 
+
+
+
+<!-- ===========================
+     ANÚNCIO DIÁRIO
+============================ -->
+
+<style>
+#anuncio-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+#anuncio-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+#anuncio-box{
+    position:relative;
+    max-width:90%;
+    max-height:90%;
+    animation:zoom .25s ease;
+}
+
+#anuncio-img{
+    display:block;
+    max-width:100%;
+    max-height:90vh;
+    border-radius:12px;
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+    cursor:pointer;
+}
+
+#fechar-anuncio{
+    position:absolute;
+    top:-15px;
+    right:-15px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#e53935;
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(0,0,0,.4);
+}
+
+#fechar-anuncio:hover{
+    background:#c62828;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(.85);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+</style>
+
+<div id="anuncio-overlay">
+    <div id="anuncio-box">
+        <button id="fechar-anuncio">&times;</button>
+
+        <img
+            id="anuncio-img"
+            src="anuncio.png"
+            alt="Anúncio">
+    </div>
+</div>
+
+<script>
+(function(){
+
+    // Configuração
+    const LINK = "https://app.sorteclub.com/pr/aEcvdRuS";
+    const STORAGE_KEY = "anuncio_visto";
+    const hoje = new Date().toISOString().slice(0,10);
+
+    const overlay = document.getElementById("anuncio-overlay");
+    const imagem = document.getElementById("anuncio-img");
+    const fechar = document.getElementById("fechar-anuncio");
+
+    // Exibe apenas uma vez por dia
+    if(localStorage.getItem(STORAGE_KEY) !== hoje){
+        overlay.classList.add("show");
+    }
+
+    function ocultar(){
+        overlay.classList.remove("show");
+        localStorage.setItem(STORAGE_KEY, hoje);
+    }
+
+    // Botão X: apenas fecha
+    fechar.addEventListener("click", function(e){
+        e.stopPropagation();
+        ocultar();
+    });
+
+    // Clique na imagem: fecha e abre o link na mesma aba
+    imagem.addEventListener("click", function(){
+        ocultar();
+        window.location.href = LINK;
+    });
+
+})();
+</script>
+
+
   
 </body>
 </html>
