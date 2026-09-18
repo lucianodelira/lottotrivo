@@ -9,34 +9,29 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
   <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
   <meta name="referrer" content="no-referrer" />
-
   <!-- SEO e redes sociais -->
   <title>LottoTrivo</title>
   <meta name="description" content="A LottoTrivo club é a melhor plataforma de apostas com segurança, pagamentos instantâneos via Pix e suporte 24/7. Jogue e multiplique seus ganhos!" />
   <meta name="keywords" content="LottoTrivo club, feitiiceira.vip, LottoTrivo, banca LottoTrivo, banca LottoTrivo vip, banca de apostas, apostas online, loterias, cassino, palpites esportivos, ganhar dinheiro, apostas seguras, pix rápido, LottoTrivo vip oficial, LottoTrivo vip login, LottoTrivo vip cadastro, LottoTrivo vip esportes, LottoTrivo vip cassino, LottoTrivo vip futebol, LottoTrivo vip resultados, LottoTrivo vip apostas seguras, LottoTrivo vip pix imediato, LottoTrivo vip grupo vip, LottoTrivo vip dicas, LottoTrivo vip análises, LottoTrivo vip estratégias" />
   <meta name="author" content="LottoTrivo" />
   <meta name="robots" content="index, follow" />
-
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="LottoTrivo - A Banca de Apostas Mais Confiável e Rentável" />
   <meta property="og:description" content="Ganhe dinheiro com apostas seguras na LottoTrivo. Pix rápido e suporte 24h. Jogue agora e maximize seus lucros!" />
   <meta property="og:image" content="https://lottotrivo.com/logo/logo.png" />
   <meta property="og:url" content="https://www.LottoTrivo.net" />
   <meta property="og:type" content="website" />
-
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LottoTrivo club - A Banca de Apostas Mais Confiável e Rentável" />
   <meta name="twitter:description" content="Aposte com segurança e receba via Pix na hora. Acesse agora a LottoTrivo!" />
   <meta name="twitter:image" content="https://lottotrivo.com/logo/logo.png" />
-
   <!-- Favicon -->
   <link rel="icon" href="https://lottotrivo.com/logo/logo.png" type="image/png">
   <link rel="shortcut icon" href="https://lottotrivo.com/logo/logo.png" type="image/png">
   <link rel="icon" href="https://lottotrivo.com/logo/logo.png" />
   <link rel="manifest" href="manifest.json" />
   <link rel="canonical" href="https://www.LottoTrivo.net" />
-
   <style>
     html, body {
       margin: 0;
@@ -64,14 +59,16 @@
     }
     .buttons {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       padding: 10px;
       background: #000;
       width: 100%;
       box-sizing: border-box;
+      position: relative;
+      flex-wrap: wrap;
     }
     /* Estilo do menu hambúrguer */
     #menu-hamburguer {
@@ -98,25 +95,66 @@
     #menu-hamburguer.open svg {
       transform: rotate(90deg);
     }
-    /* Container dos botões */
+
+    /* ===== BOTÃO JOGAR SEMPRE VISÍVEL ===== */
+    #botao-jogar {
+      background: linear-gradient(135deg, #ff0000, #ff4d4d, #ff1a1a);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      width: auto;
+      min-width: 110px;
+      height: 48px;
+      padding: 0 22px;
+      box-shadow: 0 0 18px rgba(255, 0, 0, 0.75), 0 4px 12px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      animation: pulseJogar 1.6s infinite;
+      text-transform: uppercase;
+      z-index: 10000;
+    }
+    #botao-jogar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 28px rgba(255, 0, 0, 1), 0 6px 18px rgba(0,0,0,0.5);
+    }
+    @keyframes pulseJogar {
+      0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.75); }
+      70% { box-shadow: 0 0 0 14px rgba(255, 0, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+    /* ===== FIM BOTÃO JOGAR ===== */
+
+    /* Container dos botões (menu) */
     .botoes-container {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
       justify-content: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 14px;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
+      gap: 6px;
+      padding: 4px 6px;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
       max-height: 0;
       opacity: 0;
       pointer-events: none;
       width: auto;
       max-width: 95vw;
+      z-index: 9999;
     }
     .botoes-container.open {
-      max-height: 100px;
+      max-height: 70px;
       opacity: 1;
       pointer-events: auto;
     }
@@ -183,62 +221,17 @@
         width: 80%;
         height: 80%;
       }
+      #botao-jogar {
+        font-size: 14px;
+        min-width: 95px;
+        height: 44px;
+        padding: 0 16px;
+      }
+      #menu-hamburguer {
+        padding: 7px 12px;
+        font-size: 13px;
+      }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-.buttons {
-  position: relative;
-}
-
-.botoes-container {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  justify-content: center;
-  gap: 6px;
-  padding: 4px 6px;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 10px;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  max-height: 50px; /* faixa ainda menor */
-  opacity: 0;
-  pointer-events: none;
-  width: auto;
-  max-width: 95vw;
-  z-index: 9999;
-}
-
-.botoes-container.open {
-  max-height: 50px;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
   </style>
 </head>
 <body>
@@ -247,15 +240,12 @@
       <iframe allow='clipboard-read; clipboard-write' frameborder='0' height='95%' id='embeddedIframe' loading='lazy' sandbox='allow-scripts allow-same-origin' src='https://lottotrivo.com' title='Conteúdo interativo da LottoTrivo' width='100%'></iframe>
     </div>
 
-
-
-
-
-
-
-
-
     <div class="buttons">
+      <!-- BOTÃO JOGAR SEMPRE VISÍVEL -->
+      <button id="botao-jogar" title="Jogar Agora">
+        JOGAR
+      </button>
+
       <!-- Menu hambúrguer -->
       <div id="menu-hamburguer" aria-label="Menu Bancas Parceiras" role="button" tabindex="0">
         <svg viewbox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -264,55 +254,27 @@
         <span>OUTRAS BANCAS PARA JOGAR!</span>
       </div>
 
-
-
-
-
-
-
-
-
-      <!-- Container de botões -->
-
+      <!-- Container de botões (abre ao clicar no menu) -->
       <div class="botoes-container" id="botoes-container">
-
         <button id="botao-bola" class="botao-flutuante" title="Brasileirão ⚽">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilbrqWRLPNsbW6WoWMAOrGQzc1SGVqKVqZ4BcKFjRUAKLzn1Z9PbIDUlqukU1y6ulZE61QUZ8ZRZ2T7M66goqwYDuaOQur0pV8piHPB2LMDGWSSsT6RXT9ajTRnTJ_eSk7joZ8KA3PJ2GJTlkeNT-Q6Y6UN1QfExNtjEK5UjWoPQbTXKKbFShsl2INN0eO/s200/4297950.png
-&w=1080&q=75" alt="Blaze" />
-
-</button>
-
-
-        
-        
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilbrqWRLPNsbW6WoWMAOrGQzc1SGVqKVqZ4BcKFjRUAKLzn1Z9PbIDUlqukU1y6ulZE61QUZ8ZRZ2T7M66goqwYDuaOQur0pV8piHPB2LMDGWSSsT6RXT9ajTRnTJ_eSk7joZ8KA3PJ2GJTlkeNT-Q6Y6UN1QfExNtjEK5UjWoPQbTXKKbFShsl2INN0eO/s200/4297950.png&w=1080&q=75" alt="Blaze" />
+        </button>
         
         <button id="botao-acertosclub" class="botao-flutuante" title="Acertos Club">
           <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjP_DDrfM-z9sNWLEimMl-7HvoyN-D3D_EKBnW3Xj_qH2tjERcQzv21MChv8lD5kUJAzhT9_q6livlEmy0rE8qc6jXkIs_O2skEFHUJEcKwwecesKIBFHaITULB5Zzqs87X5AzRmig7o_9fEao_BUU6nnIOF7pYJGiOJCcY7jEb1PRMHqISYcCnnVXb3fU/s200/IMG-20240927-WA0455__2_-removebg-removebg-preview%20%281%29%20%281%29.png" alt="acertosclub" />
         </button>
-
         
         <button id="botao-brasil" class="botao-flutuante" title="palpites">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZLl2_tC2wQxqZ13HprhlWeBFJLKQHJQcL9dFxCj9M7A&s=10" alt="Brasil" />
         </button>
 
-
-
-<button id="botao-tigerclub" class="botao-flutuante" title="Tiger Club">
+        <button id="botao-tigerclub" class="botao-flutuante" title="Tiger Club">
           <img src="https://assets.trivo.bet/images/superacertos.png" alt="tigerclub" />
         </button>
 
-<button id="botao-vivi" class="botao-flutuante" title="sorteclub">
+        <button id="botao-vivi" class="botao-flutuante" title="sorteclub">
           <img src="https://assets.trivo.bet/images/feiticeira2.png" alt="vivi" />
         </button>
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   </div>
@@ -326,7 +288,6 @@
   <script>
     const menu = document.getElementById('menu-hamburguer');
     const botoesContainer = document.getElementById('botoes-container');
-
     function toggleMenu() {
       const aberto = menu.classList.toggle('open');
       if (aberto) {
@@ -335,9 +296,7 @@
         botoesContainer.classList.remove('open');
       }
     }
-
     menu.addEventListener('click', toggleMenu);
-
     // Permitir abrir/fechar com Enter ou Espaço para acessibilidade
     menu.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -350,23 +309,24 @@
     document.getElementById("botao-bola").addEventListener("click", function () {
       window.location.href = "https://chat.whatsapp.com/KokcnW2aftNGVBjdELZRZK";
     });
-
     document.getElementById("botao-tigerclub").addEventListener("click", function () {
       window.open("https://app.superacertos.club/pr/DiNatQPp", "_blank");
     });
     document.getElementById("botao-acertosclub").addEventListener("click", function () {
       window.open("https://app.acertos.club/pr/qcGoRMK0", "_blank");
     });
-   
     document.getElementById("botao-brasil").addEventListener("click", function () {
       window.open("https://www.youtube.com/@acertosclub", "_blank");
     });
-
-document.getElementById("botao-vivi").addEventListener("click", function () {
+    document.getElementById("botao-vivi").addEventListener("click", function () {
       window.open("https://app.feiticeira.club/pr/PRBJ9rmd", "_blank");
     });
 
-    
+    // ===== BOTÃO JOGAR =====
+    document.getElementById("botao-jogar").addEventListener("click", function () {
+      window.open("https://app.bancabrasileira.com.br/pr/wLMKnWDU", "_blank");
+    });
+    // ===== FIM BOTÃO JOGAR =====
 
     // Service Worker e instalação do app
     if ('serviceWorker' in navigator) {
@@ -374,7 +334,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
         .then(reg => console.log('[SW] Registrado com sucesso!', reg))
         .catch(err => console.error('[SW] Erro ao registrar:', err));
     }
-
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
@@ -383,7 +342,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
         document.getElementById('install-banner').style.display = 'block';
       }
     });
-
     function instalarApp() {
       if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -403,11 +361,9 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     }
   </script>
 
-
 <!-- BANNER WHATSAPP - GRUPO DE PALPITES -->
 <!-- ========================================= -->
 <div id="whats-banner" style="display: none;">
-  <!-- BOTÃO FECHAR -->
   <button
     onclick="fecharWhatsBanner()"
     class="whats-fechar"
@@ -415,23 +371,17 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
   >
     ×
   </button>
-
-  <!-- ÍCONE WHATSAPP -->
   <div class="whats-icon-top">
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
       alt="WhatsApp"
     >
   </div>
-
-  <!-- TÍTULO -->
   <h2>🔥 ENTRE NO GRUPO DE PALPITES!</h2>
   <p>
     Receba palpites, informações e novidades<br>
     diretamente no seu WhatsApp.
   </p>
-
-  <!-- BOTÃO WHATSAPP -->
   <a
     href="https://chat.whatsapp.com/KokcnW2aftNGVBjdELZRZK"
     target="_blank"
@@ -447,17 +397,12 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
       PARTICIPAR DO GRUPO
     </span>
   </a>
-
-  <!-- RODAPÉ -->
   <div class="whats-rodape">
     ✅ Grupo gratuito • Entre agora!
   </div>
 </div>
 
 <style>
-/* ========================================= */
-/* BANNER */
-/* ========================================= */
 #whats-banner {
   position: fixed;
   top: 50%;
@@ -486,10 +431,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     bannerEntrada .5s ease,
     bannerBrilho 2s infinite;
 }
-
-/* ========================================= */
-/* ANIMAÇÃO DE ENTRADA */
-/* ========================================= */
 @keyframes bannerEntrada {
   from {
     opacity: 0;
@@ -504,10 +445,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
       scale(1);
   }
 }
-
-/* ========================================= */
-/* ANIMAÇÃO DE BRILHO */
-/* ========================================= */
 @keyframes bannerBrilho {
   0%, 100% {
     box-shadow:
@@ -522,10 +459,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
       0 15px 50px rgba(0,0,0,.8);
   }
 }
-
-/* ========================================= */
-/* BOTÃO FECHAR */
-/* ========================================= */
 .whats-fechar {
   position: absolute;
   top: 10px;
@@ -544,15 +477,10 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     0 0 12px rgba(255,23,68,.6);
   transition: .2s;
 }
-
 .whats-fechar:hover {
   transform: scale(1.12);
   background: #ff0033;
 }
-
-/* ========================================= */
-/* ÍCONE SUPERIOR */
-/* ========================================= */
 .whats-icon-top {
   width: 75px;
   height: 75px;
@@ -567,15 +495,10 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     0 0 35px rgba(37,211,102,.6);
   animation: iconPulse 1.5s infinite;
 }
-
 .whats-icon-top img {
   width: 48px;
   height: 48px;
 }
-
-/* ========================================= */
-/* PULSO DO ÍCONE */
-/* ========================================= */
 @keyframes iconPulse {
   0%, 100% {
     transform: scale(1);
@@ -584,10 +507,6 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     transform: scale(1.08);
   }
 }
-
-/* ========================================= */
-/* TÍTULO */
-/* ========================================= */
 #whats-banner h2 {
   margin: 8px 0 10px;
   color: #25D366;
@@ -597,20 +516,12 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
   text-shadow:
     0 0 8px rgba(37,211,102,.8);
 }
-
-/* ========================================= */
-/* TEXTO */
-/* ========================================= */
 #whats-banner p {
   margin: 0;
   color: #ddd;
   font-size: 14px;
   line-height: 1.5;
 }
-
-/* ========================================= */
-/* BOTÃO WHATSAPP */
-/* ========================================= */
 .whats-button {
   display: flex;
   align-items: center;
@@ -638,22 +549,16 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
   animation: buttonPulse 1.8s infinite;
   transition: .2s;
 }
-
 .whats-button img {
   width: 30px;
   height: 30px;
 }
-
 .whats-button:hover {
   transform: scale(1.04);
   box-shadow:
     0 0 20px rgba(37,211,102,1),
     0 0 40px rgba(37,211,102,.5);
 }
-
-/* ========================================= */
-/* PULSO DO BOTÃO */
-/* ========================================= */
 @keyframes buttonPulse {
   0%, 100% {
     transform: scale(1);
@@ -662,43 +567,28 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
     transform: scale(1.025);
   }
 }
-
-/* ========================================= */
-/* RODAPÉ */
-/* ========================================= */
 .whats-rodape {
   margin-top: 14px;
   color: #25D366;
   font-size: 12px;
   font-weight: bold;
 }
-
-/* ========================================= */
-/* CELULAR */
-/* ========================================= */
 @media (max-width: 480px) {
   #whats-banner {
     width: 330px;
     padding: 30px 20px 23px;
   }
-
   #whats-banner h2 {
     font-size: 20px;
   }
-
   #whats-banner p {
     font-size: 13px;
   }
-
   .whats-button {
     font-size: 15px;
     padding: 15px 10px;
   }
 }
-
-/* ========================================= */
-/* ANIMAÇÃO DE SAÍDA */
-/* ========================================= */
 .whats-banner-fechando {
   opacity: 0 !important;
   transform:
@@ -709,68 +599,39 @@ document.getElementById("botao-vivi").addEventListener("click", function () {
 </style>
 
 <script>
-/* ========================================= */
-/* CONTROLE DE EXIBIÇÃO (1x por dia) */
-/* ========================================= */
 function deveMostrarBanner() {
-  const hoje = new Date().toDateString(); // Ex: "Sat Aug 08 2026"
+  const hoje = new Date().toDateString();
   const ultimaExibicao = localStorage.getItem('whatsBannerUltimaExibicao');
-
-  // Se já mostrou hoje, não mostra novamente
   if (ultimaExibicao === hoje) {
     return false;
   }
   return true;
 }
-
 function marcarBannerComoExibido() {
   const hoje = new Date().toDateString();
   localStorage.setItem('whatsBannerUltimaExibicao', hoje);
 }
-
-/* ========================================= */
-/* FECHAR BANNER */
-/* ========================================= */
 function fecharWhatsBanner() {
   const banner = document.getElementById("whats-banner");
   if (!banner) return;
-
-  // Marca que o usuário já viu o banner hoje
   marcarBannerComoExibido();
-
   banner.classList.add("whats-banner-fechando");
-
   setTimeout(function () {
     banner.remove();
   }, 250);
 }
-
-/* ========================================= */
-/* INICIALIZAÇÃO */
-/* ========================================= */
 document.addEventListener('DOMContentLoaded', function () {
   const banner = document.getElementById("whats-banner");
-
   if (!banner) return;
-
-  // Verifica se deve mostrar
   if (deveMostrarBanner()) {
-    banner.style.display = "block"; // Mostra o banner
-    // Opcional: marcar já na exibição (descomente se preferir)
-    // marcarBannerComoExibido();
+    banner.style.display = "block";
   } else {
-    banner.remove(); // Remove completamente se já mostrou hoje
+    banner.remove();
   }
 });
 </script>
 
-
-
-
-
    <!-- ANÚNCIO DIÁRIO -->
-
-
 <style>
 #anuncio-overlay{
     position:fixed;
@@ -789,19 +650,16 @@ document.addEventListener('DOMContentLoaded', function () {
     visibility:hidden;
     transition:.3s;
 }
-
 #anuncio-overlay.show{
     opacity:1;
     visibility:visible;
 }
-
 #anuncio-box{
     position:relative;
     max-width:90%;
     max-height:90%;
     animation:zoom .25s ease;
 }
-
 #anuncio-img{
     display:block;
     max-width:100%;
@@ -810,7 +668,6 @@ document.addEventListener('DOMContentLoaded', function () {
     box-shadow:0 10px 40px rgba(0,0,0,.4);
     cursor:pointer;
 }
-
 #fechar-anuncio{
     position:absolute;
     top:-15px;
@@ -826,11 +683,9 @@ document.addEventListener('DOMContentLoaded', function () {
     cursor:pointer;
     box-shadow:0 3px 10px rgba(0,0,0,.4);
 }
-
 #fechar-anuncio:hover{
     background:#c62828;
 }
-
 @keyframes zoom{
     from{
         transform:scale(.85);
@@ -842,57 +697,40 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 </style>
-
 <div id="anuncio-overlay">
     <div id="anuncio-box">
         <button id="fechar-anuncio">&times;</button>
-
         <img
             id="anuncio-img"
             src="anuncio.png"
             alt="Anúncio">
     </div>
 </div>
-
 <script>
 (function(){
-
-    // Configuração
     const LINK = "https://login.lottotrivo.net";
     const STORAGE_KEY = "anuncio_visto";
     const hoje = new Date().toISOString().slice(0,10);
-
     const overlay = document.getElementById("anuncio-overlay");
     const imagem = document.getElementById("anuncio-img");
     const fechar = document.getElementById("fechar-anuncio");
-
-    // Exibe apenas uma vez por dia
     if(localStorage.getItem(STORAGE_KEY) !== hoje){
         overlay.classList.add("show");
     }
-
     function ocultar(){
         overlay.classList.remove("show");
         localStorage.setItem(STORAGE_KEY, hoje);
     }
-
-    // Botão X: apenas fecha
     fechar.addEventListener("click", function(e){
         e.stopPropagation();
         ocultar();
     });
-
-    // Clique na imagem: fecha e abre o link na mesma aba
     imagem.addEventListener("click", function(){
         ocultar();
         window.location.href = LINK;
     });
-
 })();
 </script>
-
-
   
 </body>
 </html>
-
